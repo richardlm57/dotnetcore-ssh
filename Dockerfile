@@ -24,9 +24,11 @@ RUN mkdir -p /var/log/supervisor /run/sshd
 # Aqui estamos copiando los arquivos de configuração necessários par cada processo
 COPY sshd_config /etc/ssh/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY inotify.sh /app/
 
 WORKDIR /app
 COPY --from=build /app ./
+
 
 EXPOSE 80 2222
 
